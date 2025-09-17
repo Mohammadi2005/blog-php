@@ -1,9 +1,7 @@
-<!-- /*
-* Template Name: Blogy
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
+<?php
+session_start();
+    require_once "./config/styleLoader.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,6 +17,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
+<!--    --><?php //require_once "./config/styleLoader.php" ?>
 
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
 	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
@@ -86,7 +85,11 @@
 								<li><a href="category.html">Culture</a></li>
 								<li><a href="category.html">Business</a></li>
 								<li><a href="category.html">Politics</a></li>
-								<li><a href="login.php">Login</a></li>
+                                <?php if(isset($_SESSION['login'])) { ?>
+                                    <li><a href="controller/logout.php">Log out</a></li>
+                                <?php } else{ ?>
+                                    <li><a href="controller/login.php">Log in</a></li>
+                                <?php } ?>
 							</ul>
 						</div>
 						<div class="col-2 text-end">
@@ -709,6 +712,7 @@
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
 
-    
+    <?php require_once 'config/sweetalert.php'; ?>
+
   </body>
   </html>

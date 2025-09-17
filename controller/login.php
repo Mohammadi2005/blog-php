@@ -7,17 +7,18 @@
     <meta name="viewport"
         content="width=device-width">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <?php require_once "../config/styleLoader.php" ?>
     <title>login</title>
 </head>
 </html>
 <body>
     <div class="login-container">
-        <form class="login-form" method="post" action="controller/sing-in.php">
+        <form class="login-form" method="post" action="sing-in.php">
             <h1>Welcome Back</h1>
             <p>Please login to your account</p>
             <div class="input-group">
-                <input type="text" id="username" name="key" placeholder="Username or Mobile or Email" required>
+                <input type="text" id="username" name="key" placeholder="Username or Mobile or Email" value="<?php  ?>" required>
             </div>
             <div class="input-group">
                 <input type="password" id="password" name="password" placeholder="Password" required>
@@ -30,3 +31,5 @@
         </form>
     </div>
 </body>
+<?php require_once '../config/sweetalert.php'; ?>
+

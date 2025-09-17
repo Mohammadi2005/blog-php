@@ -1,4 +1,5 @@
 <?php
+session_start();
 
     $pdo = require_once "../config/database.php";
     if(isset($_POST['sing-in'])){
@@ -20,10 +21,19 @@
             // exe
             $stmt->execute();
 
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
             if($stmt->rowCount() == 1) {
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['mobile'] = $user['mobile'];
+                $_SESSION['role'] = $user['role'];
+                $_SESSION['login'] = 'ok';
+
+                var_dump($_SESSION);
                 header("location: ../index.php?login=ok");
             } else {
-                header("location: ../index.php?notUser=ok");
+                header("location: ./login.php?notUser=ok");
             }
 
         } catch (PDOException $e) {
