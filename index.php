@@ -85,9 +85,20 @@ session_start();
 								<li><a href="category.html">Culture</a></li>
 								<li><a href="category.html">Business</a></li>
 								<li><a href="category.html">Politics</a></li>
+                                <?php if(isset($_SESSION['role'])){ ?>
+                                    <li>
+                                        <?php if($_SESSION['role'] == 'admin') { ?>
+                                            <a href="panel/adminPanel.php">admin panel</a>
+                                        <?php } else if($_SESSION['role'] == 'writer') { ?>
+                                            <a href="panel/writerPanel.php">writer panel</a>
+                                        <?php } else { ?>
+                                            <a href="panel/userPanel.php">user panel</a>
+                                        <?php } ?>
+                                    </li>
+                                <?php } ?>
                                 <?php if(isset($_SESSION['login'])) { ?>
                                     <li><a href="controller/logout.php">Log out</a></li>
-                                <?php } else{ ?>
+                                <?php } else { ?>
                                     <li><a href="controller/login.php">Log in</a></li>
                                 <?php } ?>
 							</ul>
